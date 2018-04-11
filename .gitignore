@@ -1,2 +1,8 @@
+*.swp
+*.pyc
+__pycache__/
+pytest_cache/
 .chalice/deployments/
 .chalice/venv/
+
+DEV.sh
