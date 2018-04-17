@@ -1,7 +1,7 @@
 *.swp
 *.pyc
 __pycache__/
-pytest_cache/
+.pytest_cache/
 .chalice/deployments/
 .chalice/venv/
 
