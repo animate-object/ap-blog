@@ -1,0 +1,5 @@
+boto3==1.7.4
+chalice==1.1.1
+mock==2.0.0
+pytest==3.5.0
+pytest-sugar==0.9.1
