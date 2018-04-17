@@ -26,8 +26,9 @@ def list_posts():
         response = S3.list_objects(
             Bucket=BUCKET_NAME
         )
+        
         return [obj['Key'] for obj in 
                 sorted(response['Contents'], key=lambda p: p['LastModified'])]
     except KeyError as ke:
-        logging.critical("There's no content in the bucket, oh no!")
-        raise
+        logging.warn("There's no content in the bucket, oh no!")
+        return []
