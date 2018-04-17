@@ -1,13 +1,12 @@
+import logging
 from os import environ
-from botocore.exceptions import ClientError
 
+from botocore.exceptions import ClientError
 from chalice import NotFoundError
 
-import boto3
-import logging
+from chalicelib.singletons import S3
 
 BUCKET_NAME = environ.get('BUCKET_NAME')
-S3 = boto3.client('s3')
 
 
 def get_post(post_name):
@@ -28,7 +27,9 @@ def list_posts():
         )
         
         return [obj['Key'] for obj in 
-                sorted(response['Contents'], key=lambda p: p['LastModified'])]
+                sorted(response['Contents'],
+                    key=lambda p: p['LastModified'],
+                    reverse=True)]
     except KeyError as ke:
         logging.warn("There's no content in the bucket, oh no!")
         return []
